@@ -6,6 +6,10 @@ example about the vue prop drilling problem and the provide inject api solution
 
 ## Project setup
 
+# prov-inj
+
+## Project setup
+
 ```
 npm install
 ```
@@ -29,5 +33,3 @@ npm run lint
 ```
 
 ### Customize configuration
-
-See [Configuration Reference](https://cli.vuejs.org/config/).

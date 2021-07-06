@@ -1,18 +1,24 @@
 <template>
-  <section>
-    <h2>{{ title }}</h2>
-    <p>{{ description }}</p>
+  <section v-if="topic">
+    <h2>Active Element Title: {{ topic.title }}</h2>
+    <p>{{ topic.fullText }}</p>
   </section>
 </template>
-<script lang="ts">
-import { defineComponent, onUpdated } from 'vue'
-export default defineComponent({
+
+<script>
+import { defineComponent, onUpdated } from 'vue';
+import { useStore } from '../store/store';
+
+export default defineComponent ({
   name: 'activeElement',
-  props: ['description', 'title'],
   setup() {
+    const store = useStore();
+    const topic = store.getActiveTopic;
+
     onUpdated(() => {
-      console.log('active-element -> onUpdate');
-    });
+      console.log('active-element -> onUpdated');
+    })
+    return { topic }
   }
-})
+});
 </script>

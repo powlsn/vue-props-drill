@@ -1,17 +1,19 @@
 <template>
-  <ul>
-    <knowledge-element
-      v-for="topic in topics"
-      :key="topic.id"
-      :id="topic.id"
-      :title="topic.title"
-      :description="topic.description"
-      @select-topic="$emit('select-topic', $event)"
-    ></knowledge-element>
-    <button @click="$emit('update-topics')">Add Topics</button>
-  </ul>
+  <div>
+    <ul>
+      <knowledge-element
+        v-for="topic in topics"
+        :key="topic.id"
+        :id="topic.id"
+        :title="topic.title"
+        :description="topic.description"
+      ></knowledge-element>
+    </ul>
+    <button @click="update()">Update Topics</button>
+  </div>
 </template>
 <script>
+import { useStore } from "../store/store";
 import { defineComponent, onUpdated } from "vue";
 import knowledgeElement from './knowledge-element.vue';
 
@@ -20,12 +22,16 @@ export default defineComponent({
   components: {
     knowledgeElement,
   },
-  props: ['topics'],
-  emits: ['select-topic', 'update-topics'],
   setup() {
+    const store  = useStore();
+    const topics = store.getTopics;
+    const update = store.updateTopics;
+
     onUpdated(() => {
       console.log('knowledge-grid -> onUpdate');
     });
+
+    return { topics, update }
   }
 });
 </script>
