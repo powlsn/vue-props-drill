@@ -2,12 +2,6 @@
 
 example about the vue prop drilling problem and the provide inject api solution
 
-# prov-inj
-
-## Project setup
-
-# prov-inj
-
 ## Project setup
 
 ```
